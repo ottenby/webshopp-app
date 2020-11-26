@@ -1,0 +1,13 @@
+<div class="cart-container">
+    <div *ngFor="let c of cartItems">
+        <app-cart-item #cartItem [cartItem]='c'></app-cart-item>
+        <button (click)="removeItem(cartItem.cartItem)">remove from cart</button>
+    </div>
+     
+</div>
+<p>total price: {{ totalPrice }}</p>
+<button (click)="clearCart()">clear cart</button>
+<br>
+<button routerLink="/checkout">To Checkout</button>
+<br>
+<a routerLink="/">back to products</a>

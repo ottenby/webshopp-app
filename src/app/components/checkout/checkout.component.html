@@ -1,0 +1,44 @@
+<p>checkout works!</p>
+<div>
+   Total Price:  {{ newOrder.totalPrice }} kr
+    <br>
+
+   <form [formGroup]="user" (ngSubmit)="save()" class="text-center border border-light p-5">
+      <div>
+         <label for="first-name">First Name</label>
+         <input id="first-name" type="text" formControlName="firstName" class="form-control mb-4"/>
+      </div>
+      <div>
+         <label for="last-name">Last Name</label>
+         <input id="last-name" type="text" formControlName="lastName" />
+      </div>
+      <div>
+         <label for="email">Email</label>
+         <input id="email" type="text" formControlName="email" />
+      </div>
+      <div formGroupName="address">
+         <div>
+            <label for="street">Street</label>
+            <input type="text" id="street" formControlName="street" />
+         </div>
+         <div>
+            <label for="zip">Zip</label>
+            <input type="text" id="zip" formControlName="zip" />
+         </div>
+         <div>
+            <label for="city">City</label>
+            <input type="text" id="city" formControlName="city" />
+         </div>
+      </div>
+      <button type="submit" [disabled]="!user.valid">Send</button>
+   </form>
+
+   <div *ngIf="dataSent">
+      <p>
+         Thank you for your order!
+      </p>
+    <p> Your total is  {{ newOrder.totalPrice }}  kr and your paymentmethod is </p>
+      {{ newOrder.paymentMethod }}. Your order order was recieved on
+      {{ newOrder.created | date }}
+   </div>
+</div>

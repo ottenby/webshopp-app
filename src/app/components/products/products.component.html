@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div *ngFor="let m of movies" class="movie-wrapper">
+    <app-movie #movie [movie]="m"></app-movie>
+    <button (click)="addToCart(movie)">buy</button>
+    <button (click)="getMovie(movie.movie)">details</button>
+    <div *ngIf="show">
+        <app-product-details *ngIf="selectedMovie.id === m.id" [movie]="m">
+        </app-product-details>
+    </div>
+  </div>
+  <a routerLink="/cart">to cart</a>
+
+
+</div>
+
+<div class="details-container">
+
+</div>
